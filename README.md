@@ -32,7 +32,7 @@ Este projeto consiste em uma aplicação desenvolvida em C# com .NET e SQL Serve
 ### 1. Clonar o Repositório
 
 ```bash
-git clone https://github.com/seu-usuario/calculadora-diaria.git
+git clone https://github.com/viictorocha/calculadoradiaria.git
 cd calculadora-diaria
 ```
 
