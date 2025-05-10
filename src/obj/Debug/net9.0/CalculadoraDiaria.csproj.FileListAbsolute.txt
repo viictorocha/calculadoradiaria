@@ -1,0 +1,14 @@
+D:\Desenvolvimento\CalculadoraDiaria\src\bin\Debug\net9.0\CalculadoraDiaria.exe
+D:\Desenvolvimento\CalculadoraDiaria\src\bin\Debug\net9.0\CalculadoraDiaria.deps.json
+D:\Desenvolvimento\CalculadoraDiaria\src\bin\Debug\net9.0\CalculadoraDiaria.runtimeconfig.json
+D:\Desenvolvimento\CalculadoraDiaria\src\bin\Debug\net9.0\CalculadoraDiaria.dll
+D:\Desenvolvimento\CalculadoraDiaria\src\bin\Debug\net9.0\CalculadoraDiaria.pdb
+D:\Desenvolvimento\CalculadoraDiaria\src\obj\Debug\net9.0\CalculadoraDiaria.GeneratedMSBuildEditorConfig.editorconfig
+D:\Desenvolvimento\CalculadoraDiaria\src\obj\Debug\net9.0\CalculadoraDiaria.AssemblyInfoInputs.cache
+D:\Desenvolvimento\CalculadoraDiaria\src\obj\Debug\net9.0\CalculadoraDiaria.AssemblyInfo.cs
+D:\Desenvolvimento\CalculadoraDiaria\src\obj\Debug\net9.0\CalculadoraDiaria.csproj.CoreCompileInputs.cache
+D:\Desenvolvimento\CalculadoraDiaria\src\obj\Debug\net9.0\CalculadoraDiaria.dll
+D:\Desenvolvimento\CalculadoraDiaria\src\obj\Debug\net9.0\refint\CalculadoraDiaria.dll
+D:\Desenvolvimento\CalculadoraDiaria\src\obj\Debug\net9.0\CalculadoraDiaria.pdb
+D:\Desenvolvimento\CalculadoraDiaria\src\obj\Debug\net9.0\CalculadoraDiaria.genruntimeconfig.cache
+D:\Desenvolvimento\CalculadoraDiaria\src\obj\Debug\net9.0\ref\CalculadoraDiaria.dll
