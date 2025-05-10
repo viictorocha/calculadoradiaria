@@ -1,110 +1,68 @@
-# Calculadora Diária
+# **Calculadora Diária - Projeto de Estudos**
 
-Este projeto consiste em uma aplicação desenvolvida em C# com .NET e SQL Server para realizar cálculos diários e mensais. A aplicação é containerizada usando Docker para facilitar a distribuição e o gerenciamento.
+Este projeto tem como objetivo a criação de uma aplicação que realiza cálculos diários e mensais, utilizando **Docker** para o gerenciamento dos contêineres e **SQL Server** para o armazenamento de dados.
 
-## Funcionalidades
+### **Estrutura do Projeto**
+- **Aplicação C# (.NET)**: Responsável por realizar os cálculos.
+- **SQL Server**: Banco de dados para armazenar as informações relacionadas aos cálculos.
+- **Docker**: Para criar, gerenciar e isolar os contêineres de aplicação e banco de dados.
 
-* **Execução Contínua:** Mantém-se em execução para realização de cálculos programados.
-* **Conexão com Banco de Dados:** Integração com SQL Server para armazenamento de dados.
-* **Arquitetura Modular:** Separado em contêineres independentes para aplicação e banco de dados.
-* **Cálculos Automatizados:** Rotinas diárias e mensais que serão implementadas futuramente.
+---
 
-## Requisitos
+## **Pré-Requisitos**
 
-* .NET SDK 9.0
-* Docker e Docker Compose
-* SQL Server (imagem de contêiner utilizada: `mcr.microsoft.com/mssql/server:2022-latest`)
+- **Docker** instalado e em execução na sua máquina.
+- **.NET SDK** para compilar a aplicação C#.
 
-## Estrutura do Projeto
+---
 
-```plaintext
-.
-├── src/
-│   ├── Program.cs
-│   ├── CalculadoraDiaria.csproj
-├── Dockerfile
-├── docker-compose.yml
-└── README.md
-```
+## **Passos para Rodar o Projeto**
 
-## Configuração do Ambiente
+### **1. Construir a Imagem da Aplicação**
 
-### 1. Clonar o Repositório
+Primeiro, é necessário construir a imagem Docker da aplicação **Calculadora Diária**:
 
 ```bash
-git clone https://github.com/viictorocha/calculadoradiaria.git
-cd calculadora-diaria
-```
+docker build -t calculadora-diaria .
+Isso criará a imagem com o nome calculadora-diaria.
 
-### 2. Configurar o Docker
+2. Rodar o Contêiner da Aplicação
+Após a construção da imagem, você pode rodar a aplicação em um contêiner Docker. O contêiner será exposto na porta 5000:
 
-Certifique-se de ter o Docker e o Docker Compose instalados. Para configurar os contêineres:
+bash
+Copiar
+Editar
+docker run --name calculadora-diaria -d -p 5000:80 calculadora-diaria
+Isso iniciará a aplicação C# em segundo plano (-d), vinculando a porta 5000 no seu computador à porta 80 do contêiner.
 
-#### Dockerfile (Aplicação C#)
+3. Rodar o Contêiner do SQL Server
+Agora, vamos rodar o contêiner do SQL Server. A senha do usuário sa é configurada com a variável de ambiente SA_PASSWORD:
 
-```dockerfile
-FROM mcr.microsoft.com/dotnet/nightly/sdk:9.0 AS build-env
-WORKDIR /app
+bash
+Copiar
+Editar
+docker run -e "ACCEPT_EULA=Y" -e "SA_PASSWORD=2025TesteDocker#" -p 1433:1433 --name sqlserver-db -d mcr.microsoft.com/mssql/server:2022-latest
+Isso iniciará o contêiner SQL Server com a senha de administrador definida. O SQL Server estará disponível na porta 1433.
 
-COPY ./src/*.csproj ./
-RUN dotnet restore
+4. Conectar à Base de Dados
+Para conectar a aplicação ao banco de dados SQL Server, utilize a seguinte string de conexão:
 
-COPY ./src/. ./
-RUN dotnet publish -c Release -o out
+plaintext
+Copiar
+Editar
+Server=localhost,1433;Database=master;User Id=sa;Password=2025TesteDocker#;
+Lembre-se de substituir 2025TesteDocker# pela senha que você configurou no comando docker run do SQL Server.
 
-WORKDIR /app/out
-ENTRYPOINT ["dotnet", "CalculadoraDiaria.dll"]
-```
+5. Acessar a Aplicação
+Depois de rodar ambos os contêineres, a aplicação estará acessível no navegador em http://localhost:5000.
 
-#### docker-compose.yml (Orquestração de Contêineres)
+Configuração do Banco de Dados
+Banco de Dados no SQL Server
+O contêiner do SQL Server é iniciado com a base de dados master.
 
-```yaml
-version: "3.9"
-services:
-  app:
-    build: .
-    ports:
-      - "5000:80"
-    depends_on:
-      - db
-  db:
-    image: mcr.microsoft.com/mssql/server:2022-latest
-    environment:
-      SA_PASSWORD: "your_password"
-      ACCEPT_EULA: "Y"
-    ports:
-      - "1433:1433"
-```
+Você pode criar outras bases de dados ou tabelas conforme necessário para os cálculos.
 
-### 3. Construir e Rodar os Contêineres
+Notas Importantes
+Segurança: Em um ambiente de produção, nunca compartilhe senhas simples em código ou configurações. Utilize métodos seguros para armazenar credenciais.
 
-```bash
-docker-compose up --build
-```
-
-A aplicação estará acessível em `http://localhost:5000`.
-
-### 4. Verificar os Logs
-
-Para verificar a saída dos contêineres:
-
-```bash
-docker logs -f <container_id>
-```
-
-## Roadmap
-
-* [x] Configuração inicial da aplicação
-* [x] Containerização com Docker
-* [ ] Implementação dos cálculos diários
-* [ ] Implementação dos cálculos mensais
-* [ ] Criação de APIs para consumo de dados
-* [ ] Documentação detalhada das rotinas de cálculo
-
-## Contribuição
-
-Contribuições são bem-vindas! Por favor, abra uma issue ou envie um pull request com melhorias ou correções.
-
-## Licença
-
-Este projeto está licenciado sob a Licença MIT. Consulte o arquivo LICENSE para mais informações.
+Este projeto é destinado para fins de estudo e pode ser utilizado para aprender sobre Docker, C# e SQL Server.

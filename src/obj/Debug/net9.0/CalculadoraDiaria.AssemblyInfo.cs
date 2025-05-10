@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("CalculadoraDiaria")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+4782075fcd4b110a56a2f4629d96059c6eec30dd")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+5615c09ec7c4bdb09173c213e4fa211f817591b3")]
 [assembly: System.Reflection.AssemblyProductAttribute("CalculadoraDiaria")]
 [assembly: System.Reflection.AssemblyTitleAttribute("CalculadoraDiaria")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
